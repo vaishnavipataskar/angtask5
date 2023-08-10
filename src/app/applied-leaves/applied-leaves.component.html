@@ -1,0 +1,73 @@
+<nav class="navbar navbar-dark bg-dark text-right">
+    <div class="navbar-brand">
+      <button class="btn btn-primary text-white" routerLink="/staffLeaves">Apply for Leave</button>
+    </div>
+  </nav>
+
+<div class="container">
+    <div class="row mb-5">
+        <div class="col-3"> 
+            <div class="card mt-4" style="height: 125px;">
+                <div class="card-header">
+                    <p>Total Leaves</p>
+                </div>
+                <div class="card-body">
+                    {{ totalLeaves }}
+                </div>
+            </div>           
+        </div>
+        <div class="col-3">
+            <div class="card mt-4" style="height: 125px;">
+                <div class="card-header">
+                    <p>Approve Leaves</p>
+                </div>
+                <div class="card-body">
+                    {{ approve }}
+                </div>
+            </div>              
+        </div>
+        <div class="col-3">
+            <div class="card mt-4" style="height: 125px;">
+                <div class="card-header">
+                    <p>Reject Leaves</p>
+                </div>
+                <div class="card-body">
+                    {{ reject }}
+                </div>
+            </div>            
+        </div>
+        <div class="col-3">
+            <div class="card mt-4" style="height: 125px;">
+                <div class="card-header">
+                    <p>Pending Leaves</p>
+                </div>
+                <div class="card-body">
+                    {{ pending }}
+                </div>
+            </div>              
+        </div>
+    </div>
+        
+
+
+
+
+
+    <div class="row">
+        <div class="col-6 col-md-4 mt-4" style="margin: 0 auto;">
+                <div class="card mb-4" [style.display]="showCard ? 'block' : 'none'" *ngFor="let data of staffLInfo">
+                    <div class="card-body">
+                        <div>
+                            -{{data.data.start|date}} to {{data.data.end|date}} for {{data.totaldays}} days
+                        </div>
+                        <div>
+                            -{{data.data.reason}}
+                        </div>
+                        <div class="text-center">
+                            status : <span style="color: green;">{{data.status}}</span>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>

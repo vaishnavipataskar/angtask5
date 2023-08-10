@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="row">
+        <div class="col-6 col-md-4 mt-4" style="margin: 0 auto;">
+            <!-- {{staffLeave|json}} -->
+                <div class="card mb-4" style="height: 200px;" *ngFor="let data of staffLInfo">
+                    <div class="card-body">
+                    
+                        <div>
+                            -{{data.fullName}}
+                        </div>
+                        <div>
+                            -{{data.data.start|date}} to {{data.data.end|date}} for {{data.totaldays}} days                                                        
+                        </div>
+                        <div class="mb-4">
+                            -Reason : {{data.data.reason}}
+                        </div>
+                        <div class="text-center">
+                            <button class="btn btn-success text-white mr-2" (click)="approve(data.leaveId,data.id)">Approve</button>
+                            <button class="btn btn-danger text-white" (click)="reject(data.leaveId)">Rejected</button>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>

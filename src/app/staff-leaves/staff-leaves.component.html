@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <form [formGroup]="formObj" (ngSubmit)="onSubmit()">
+        <div class="col-4" style="margin:0 auto; border: 1px solid #000000;">
+          <div style="display: flex; justify-content: space-between;">
+              <h2 class="heading">Staff Leaves</h2>
+          </div>
+      
+          <mat-form-field appearance="fill" style="width: 100%;">
+          <mat-label>Enter a date range</mat-label>
+          <mat-date-range-input [formGroup]="formObj" [rangePicker]="picker">
+            <input matStartDate formControlName="start" placeholder="Start date" name="start">
+            <input matEndDate formControlName="end" placeholder="End date" name="end">
+          </mat-date-range-input>
+          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-date-range-picker #picker></mat-date-range-picker>
+        
+          <mat-error *ngIf="formObj.controls.start.hasError('matStartDateInvalid')">Invalid start date</mat-error>
+          <mat-error *ngIf="formObj.controls.end.hasError('matEndDateInvalid')">Invalid end date</mat-error>
+        </mat-form-field> 
+      
+        <label for="reason">Reason</label>
+        <br>
+        <textarea style="width: 100%;" rows="3" id="reason" formControlName="reason" name="reason"></textarea>
+        
+        <div class="text-right mb-2 mt-2">
+          <button class="btn btn-danger mr-2" (click)="cancelLeave()">Cancel</button>
+          <button class="btn btn-primary" type="submit">Submit</button>
+        </div>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
