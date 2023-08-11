@@ -1,22 +1,30 @@
+<h1 class="text-center bg-primary text-white p-2">Applied Leaves</h1>
+
 <div class="container">
-    <div class="row">
-        <div class="col-6 col-md-4 mt-4" style="margin: 0 auto;">
+    <div class="row mt-4">
+        <div class="col-4 mt-4" *ngFor="let data of staffLInfo">
             <!-- {{staffLeave|json}} -->
-                <div class="card mb-4" style="height: 200px;" *ngFor="let data of staffLInfo">
+                <div class="card mb-4">
                     <div class="card-body">
                     
-                        <div>
+                        <div class="mb-4">
                             -{{data.fullName}}
                         </div>
-                        <div>
+                        <div class="mb-4">
                             -{{data.data.start|date}} to {{data.data.end|date}} for {{data.totaldays}} days                                                        
                         </div>
                         <div class="mb-4">
                             -Reason : {{data.data.reason}}
                         </div>
-                        <div class="text-center">
+                        <div class="text-center" *ngIf="data.status==='pending'">
                             <button class="btn btn-success text-white mr-2" (click)="approve(data.leaveId,data.id)">Approve</button>
-                            <button class="btn btn-danger text-white" (click)="reject(data.leaveId)">Rejected</button>
+                            <button class="btn btn-danger text-white" (click)="reject(data.leaveId)">Reject</button>
+                        </div>
+                        <div class="text-center text-success" *ngIf="data.status==='approve'">
+                            <h4>Approve</h4>
+                        </div>
+                        <div class="text-center text-danger" *ngIf="data.status==='reject'">
+                            <h4>Reject</h4>
                         </div>
                     </div>
                 </div>

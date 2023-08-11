@@ -35,13 +35,12 @@ export class HodCardsComponent implements OnInit{
       let leaveObj={leaveId:leaveId, status:'approve'}
       this.httpServe.dataForId(leaveObj).subscribe((val:any)=>{
         console.log(val.status); 
-        //get method >>get leave (leavedays)>>use leaveId>>subscription >>get use id >>person(user>>totaldayas)>>createobject>>leavaId:id,totalleaves:valtotalLeaves-parram.leavvedays>>patch method call>>pass object id line number 36    
             this.httpServe.leaveData(leaveId).subscribe((leaveData:any)=>{
-              console.log(leaveData.totaldays)   //8
+              console.log(leaveData.totaldays)   
               let obj = {id : id , totalDays : leaveData.totaldays}
               console.log(obj);
                     this.httpServe.LeaveForId(id).subscribe((data:any)=>{
-                      console.log(data)  //20
+                      console.log(data)  
                       let userObj = {id : id , totalLeaves : data.totalLeaves-leaveData.totaldays}
                       console.log(userObj)
                       this.httpServe.userDataForId(userObj).subscribe((userData:any)=>{
